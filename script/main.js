@@ -1,4 +1,5 @@
 document.body.onload = getTweets;
+// event for clicking the tweet button
 document.getElementById("tweet-button").addEventListener
 ('click', async (event) => {
   const tweet = document.getElementById("tweet-content");
@@ -25,6 +26,7 @@ document.getElementById("tweet-button").addEventListener
   }
 });
 
+// updates character count
 document.getElementById('tweet-content').addEventListener('input', (event) => {
   const counter = document.getElementById('text-counter');
   const tweet = document.getElementById('tweet-content');
@@ -41,6 +43,7 @@ document.getElementById('tweet-content').addEventListener('input', (event) => {
   }
 });
 
+// updates height of tweet box
 document.getElementById("tweet-content").addEventListener('input', (event) => {
   tweetBox = document.getElementById("tweet-content")
   tweetBox.style.height = 'auto';
@@ -67,12 +70,12 @@ async function getTweets() {
     const date = element['date'].slice(0, 10);
     let time = element['date'].slice(11, 16);
     let hours = parseInt(time);
-    hours -= 17;
+    hours -= 12;
     if (hours > 0) {
-      time = hours.toString() + time.slice(2) + " PM"
+      time = hours.toString() + time.slice(2) + " PM (UTC)"
     } else {
       hours += 12
-      time = hours.toString() + time.slice(2) + " AM"
+      time = hours.toString() + time.slice(2) + " AM (UTC)"
     }
     const newDate = document.createTextNode(`${time} · ${date}`);
     const dateDiv = document.createElement("div");
