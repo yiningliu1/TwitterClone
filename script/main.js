@@ -67,20 +67,16 @@ async function getTweets() {
     contentDiv.classList.add("tweet-content");
     contentDiv.appendChild(newTweet);
 
-    const date = element['date'].slice(0, 10);
+    let date = element['date'].slice(0, 10);
     let time = element['date'].slice(11, 16);
     let hours = parseInt(time);
-    hours -= 5
-    if (hours < 0) {
-      hours += 24;
-    }
 
     hours -= 12;
     if (hours > 0) {
-      time = hours.toString() + time.slice(2) + " PM"
+      time = hours.toString() + time.slice(2) + " PM (UST)"
     } else {
       hours += 12
-      time = hours.toString() + time.slice(2) + " AM"
+      time = hours.toString() + time.slice(2) + " AM (UST)"
     }
     const newDate = document.createTextNode(`${time} · ${date}`);
     const dateDiv = document.createElement("div");
