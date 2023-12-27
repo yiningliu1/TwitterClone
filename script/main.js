@@ -70,12 +70,17 @@ async function getTweets() {
     const date = element['date'].slice(0, 10);
     let time = element['date'].slice(11, 16);
     let hours = parseInt(time);
+    hours -= 5
+    if (hours < 0) {
+      hours += 24;
+    }
+
     hours -= 12;
     if (hours > 0) {
-      time = hours.toString() + time.slice(2) + " PM (UTC)"
+      time = hours.toString() + time.slice(2) + " PM"
     } else {
       hours += 12
-      time = hours.toString() + time.slice(2) + " AM (UTC)"
+      time = hours.toString() + time.slice(2) + " AM"
     }
     const newDate = document.createTextNode(`${time} · ${date}`);
     const dateDiv = document.createElement("div");
