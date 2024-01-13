@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
-const connectDB = require("./backend/config/dbConn");
+const connectDB = require("./config/dbConn");
 const PORT = process.env.PORT || 3500;
 
 // connect to MongoDB
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json());
 
-app.use("/tweet", require("./backend/routes/tweet"));
+app.use("/tweet", require("./routes/tweet"));
 
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
